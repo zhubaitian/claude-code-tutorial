@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Hello World</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Vue 3 CDN -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div id="app">
+        <header class="header">
+            <h1><i class="fas fa-code"></i> Vue.js Hello World</h1>
+            <p class="subtitle">Your first Vue.js application</p>
+        </header>
+
+        <main class="main-content">
+            <div class="card">
+                <h2><i class="fas fa-rocket"></i> Welcome to Vue!</h2>
+                <p class="message">{{ greeting }}</p>
+                <button class="btn" @click="toggleGreeting">
+                    <i class="fas fa-sync-alt"></i> {{ buttonText }}
+                </button>
+            </div>
+
+            <div class="card">
+                <h2><i class="fas fa-sliders-h"></i> Interactive Counter</h2>
+                <p class="counter">Count: {{ count }}</p>
+                <div class="button-group">
+                    <button class="btn btn-primary" @click="increment">
+                        <i class="fas fa-plus"></i> Increment
+                    </button>
+                    <button class="btn btn-secondary" @click="decrement">
+                        <i class="fas fa-minus"></i> Decrement
+                    </button>
+                    <button class="btn btn-reset" @click="reset">
+                        <i class="fas fa-redo"></i> Reset
+                    </button>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2><i class="fas fa-keyboard"></i> Two-Way Data Binding</h2>
+                <div class="input-group">
+                    <label for="name-input"><i class="fas fa-user"></i> Enter your name:</label>
+                    <input
+                        id="name-input"
+                        type="text"
+                        v-model="name"
+                        placeholder="Type your name here..."
+                        class="text-input"
+                    >
+                </div>
+                <p class="dynamic-text">Hello, {{ name || 'stranger' }}! <i class="fas fa-hand-wave"></i></p>
+            </div>
+
+            <div class="card">
+                <h2><i class="fas fa-list"></i> Vue Features List</h2>
+                <ul class="features-list">
+                    <li v-for="(feature, index) in features" :key="index">
+                        <i class="fas fa-check-circle"></i> {{ feature }}
+                    </li>
+                </ul>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p><i class="fas fa-info-circle"></i> This is a simple Vue.js application demonstrating basic concepts.</p>
+            <p>Built with <i class="fas fa-heart"></i> using Vue 3 Composition API</p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
