@@ -38,7 +38,7 @@ npm run preview
 ```
 
 ### Development Server
-- **Port**: 8081 (configured in `vite.config.js`)
+- **Port**: 8082 (configured in `vite.config.js`)
 - **Auto-open**: Enabled (browser opens automatically)
 - **HMR**: Enabled for fast development
 
@@ -133,6 +133,6 @@ When extending the application:
 ### Development Workflow
 1. Run `npm run dev` for development
 2. Make changes to `.vue` files - HMR will update automatically
-3. Test changes in browser at http://localhost:8081
+3. Test changes in browser at http://localhost:8082
 4. Run `npm run build` for production deployment
 5. Use `npm run preview` to test production build locally
