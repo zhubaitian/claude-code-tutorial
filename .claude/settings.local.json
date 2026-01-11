@@ -3,5 +3,8 @@
     "allow": [
       "Bash(npm install:*)"
     ]
+  },
+  "enabledPlugins": {
+    "playwright@claude-plugins-official": true
   }
 }

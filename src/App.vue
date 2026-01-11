@@ -10,12 +10,12 @@ import Header from './components/Header.vue'
 </script>
 
 <style>
-/* 基本布局样式 */
+/* App layout styles */
 #app {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: var(--font-family);
   min-height: 100vh;
-  padding: 20px;
-  color: #333;
+  padding: var(--spacing-xl);
+  color: var(--color-gray-800);
   max-width: 1200px;
   width: 100%;
   margin: 0 auto;
