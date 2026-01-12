@@ -127,6 +127,9 @@ dist-ssr
 *.swp
 *.swo
 
+# MCP Servers
+.playwright-mcp/
+
 # OS
 .DS_Store
 Thumbs.db
