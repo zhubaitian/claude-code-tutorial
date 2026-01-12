@@ -106,163 +106,163 @@
 }
 
 .about-card {
-  background: white;
-  border-radius: 15px;
-  padding: 30px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  background: var(--color-white);
+  border-radius: var(--radius-2xl);
+  padding: var(--spacing-2xl);
+  box-shadow: var(--shadow-xl);
 }
 
 .about-header {
   display: flex;
   align-items: center;
-  gap: 15px;
-  margin-bottom: 30px;
-  padding-bottom: 20px;
-  border-bottom: 2px solid #f0f0f0;
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-2xl);
+  padding-bottom: var(--spacing-xl);
+  border-bottom: 2px solid var(--color-gray-100);
 }
 
 .about-header i {
   font-size: 2.5rem;
-  color: #667eea;
+  color: var(--color-primary);
 }
 
 .about-header h1 {
   margin: 0;
-  color: #333;
+  color: var(--color-gray-800);
   font-size: 2rem;
 }
 
 .about-content section {
-  margin-bottom: 40px;
+  margin-bottom: var(--spacing-2xl);
 }
 
 .about-content h2 {
   display: flex;
   align-items: center;
-  gap: 10px;
-  color: #4a5568;
-  margin-bottom: 20px;
+  gap: var(--spacing-sm);
+  color: var(--color-gray-600);
+  margin-bottom: var(--spacing-xl);
   font-size: 1.5rem;
 }
 
 .about-content h2 i {
-  color: #667eea;
+  color: var(--color-primary);
 }
 
 .tech-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 20px;
+  gap: var(--spacing-xl);
 }
 
 .tech-item {
-  background: #f8f9fa;
-  border-radius: 10px;
-  padding: 20px;
+  background: var(--color-gray-50);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-xl);
   text-align: center;
   transition: transform 0.3s ease;
 }
 
 .tech-item:hover {
   transform: translateY(-5px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-lg);
 }
 
 .tech-item i {
   font-size: 2.5rem;
-  color: #667eea;
-  margin-bottom: 10px;
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-sm);
 }
 
 .tech-item h3 {
-  margin: 10px 0;
-  color: #333;
+  margin: var(--spacing-sm) 0;
+  color: var(--color-gray-800);
 }
 
 .tech-item p {
-  color: #718096;
-  font-size: 0.9rem;
+  color: var(--color-gray-500);
+  font-size: var(--font-size-sm);
   line-height: 1.5;
 }
 
 .info-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
+  gap: var(--spacing-xl);
 }
 
 .info-item {
   display: flex;
   align-items: center;
-  gap: 15px;
-  padding: 15px;
-  background: #f8f9fa;
-  border-radius: 10px;
+  gap: var(--spacing-lg);
+  padding: var(--spacing-lg);
+  background: var(--color-gray-50);
+  border-radius: var(--radius-xl);
 }
 
 .info-item i {
   font-size: 1.8rem;
-  color: #667eea;
+  color: var(--color-primary);
   min-width: 40px;
 }
 
 .info-item h3 {
-  margin: 0 0 5px 0;
-  color: #4a5568;
-  font-size: 1rem;
+  margin: 0 0 var(--spacing-xs) 0;
+  color: var(--color-gray-600);
+  font-size: var(--font-size-base);
 }
 
 .info-item p {
   margin: 0;
-  color: #718096;
-  font-size: 0.9rem;
+  color: var(--color-gray-500);
+  font-size: var(--font-size-sm);
 }
 
 .author-card {
   display: flex;
-  gap: 30px;
-  background: #f8f9fa;
-  border-radius: 15px;
-  padding: 30px;
+  gap: var(--spacing-2xl);
+  background: var(--color-gray-50);
+  border-radius: var(--radius-2xl);
+  padding: var(--spacing-2xl);
   align-items: center;
 }
 
 .author-avatar i {
   font-size: 5rem;
-  color: #667eea;
+  color: var(--color-primary);
 }
 
 .author-details h3 {
-  margin: 0 0 10px 0;
-  color: #333;
+  margin: 0 0 var(--spacing-sm) 0;
+  color: var(--color-gray-800);
   font-size: 1.5rem;
 }
 
 .author-details p {
-  color: #718096;
+  color: var(--color-gray-500);
   line-height: 1.6;
-  margin-bottom: 20px;
+  margin-bottom: var(--spacing-xl);
 }
 
 .contact-links {
   display: flex;
-  gap: 15px;
+  gap: var(--spacing-lg);
 }
 
 .contact-link {
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 10px 20px;
-  background: #667eea;
-  color: white;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-sm) var(--spacing-xl);
+  background: var(--color-primary);
+  color: var(--color-white);
   text-decoration: none;
-  border-radius: 8px;
+  border-radius: var(--radius-lg);
   transition: all 0.3s ease;
 }
 
 .contact-link:hover {
-  background: #764ba2;
+  background: var(--color-secondary);
   transform: translateY(-2px);
 }
 
