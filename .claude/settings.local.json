@@ -3,5 +3,9 @@
     "allow": [
       "Bash(npm install:*)"
     ]
-  }
+  },
+  "enableAllProjectMcpServers": true,
+  "enabledMcpjsonServers": [
+    "playwright"
+  ]
 }

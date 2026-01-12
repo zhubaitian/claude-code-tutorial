@@ -1,5 +1,24 @@
 <template>
   <main class="main-content">
+    <!-- DemoButton 组件展示区域 -->
+    <div class="demo-button-showcase">
+      <h2>演示按钮组件</h2>
+      <div class="button-group">
+        <DemoButton variant="primary" label="主按钮" @click="handleButtonClick('primary')" />
+        <DemoButton variant="danger" label="危险按钮" @click="handleButtonClick('danger')" />
+        <DemoButton variant="success" label="成功按钮" @click="handleButtonClick('success')" />
+      </div>
+      <div class="button-group">
+        <DemoButton variant="primary" label="禁用按钮" :disabled="true" />
+        <DemoButton variant="danger" label="禁用危险" :disabled="true" />
+        <DemoButton variant="success" label="禁用成功" :disabled="true" />
+      </div>
+      <p class="hint-text">
+        <i class="fas fa-info-circle"></i>
+        点击按钮查看控制台输出，三种变体分别用于不同场景。禁用按钮展示禁用状态样式。
+      </p>
+    </div>
+
     <div class="input-group">
       <input
         id="new-todo-input"
@@ -8,20 +27,23 @@
         placeholder="添加新任务..."
         class="text-input"
         @keyup.enter="addTodo"
+      />
+      <button
+        class="btn btn-primary"
+        @click="addTodo"
+        :disabled="!newTodo.trim()"
       >
-      <button class="btn btn-primary" @click="addTodo" :disabled="!newTodo.trim()">
         <i class="fas fa-plus"></i> 添加
       </button>
     </div>
 
     <div class="todo-container">
-
       <div class="todo-list" v-if="todos.length > 0">
         <div
           v-for="todo in todos"
           :key="todo.id"
           class="todo-item"
-          :class="{ 'completed': todo.completed }"
+          :class="{ completed: todo.completed }"
         >
           <div class="todo-content">
             <input
@@ -29,7 +51,7 @@
               :id="'todo-' + todo.id"
               v-model="todo.completed"
               class="todo-checkbox"
-            >
+            />
             <template v-if="editingId === todo.id">
               <input
                 type="text"
@@ -38,10 +60,14 @@
                 @blur="saveEdit(todo.id)"
                 class="edit-input"
                 autofocus
-              >
+              />
             </template>
             <template v-else>
-              <label :for="'todo-' + todo.id" class="todo-text" @dblclick="startEdit(todo)">
+              <label
+                :for="'todo-' + todo.id"
+                class="todo-text"
+                @dblclick="startEdit(todo)"
+              >
                 {{ todo.text }}
               </label>
             </template>
@@ -57,7 +83,11 @@
                 <i class="fas fa-edit"></i>
               </button>
             </template>
-            <button class="btn-delete" @click="removeTodo(todo.id)" title="删除任务">
+            <button
+              class="btn-delete"
+              @click="removeTodo(todo.id)"
+              title="删除任务"
+            >
               <i class="fas fa-trash"></i>
             </button>
           </div>
@@ -69,82 +99,115 @@
         <p>还没有任何任务</p>
         <p class="empty-hint">添加第一个任务开始吧！</p>
       </div>
-
     </div>
   </main>
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed } from "vue";
+import DemoButton from "../components/DemoButton.vue";
 
 // 响应式数据
-const newTodo = ref('')
-const editingId = ref(null)
-const editingText = ref('')
+const newTodo = ref("");
+const editingId = ref(null);
+const editingText = ref("");
 const todos = ref([
-  { id: 1, text: '学习Vue 3基础', completed: true },
-  { id: 2, text: '掌握Composition API', completed: true },
-  { id: 3, text: '构建待办事项应用', completed: false },
-  { id: 4, text: '学习Vue Router', completed: false },
-  { id: 5, text: '了解Pinia状态管理', completed: false }
-])
+  { id: 1, text: "学习Vue 3基础", completed: true },
+  { id: 2, text: "掌握Composition API", completed: true },
+  { id: 3, text: "构建待办事项应用", completed: false },
+  { id: 4, text: "学习Vue Router", completed: false },
+  { id: 5, text: "了解Pinia状态管理", completed: false },
+]);
 
 // 计算属性
-const totalTodos = computed(() => todos.value.length)
-const completedTodos = computed(() => todos.value.filter(todo => todo.completed).length)
-const pendingTodos = computed(() => totalTodos.value - completedTodos.value)
+const totalTodos = computed(() => todos.value.length);
+const completedTodos = computed(
+  () => todos.value.filter((todo) => todo.completed).length
+);
+const pendingTodos = computed(() => totalTodos.value - completedTodos.value);
 
 // 方法
 const addTodo = () => {
-  const trimmedText = newTodo.value.trim()
-  if (!trimmedText) return
+  const trimmedText = newTodo.value.trim();
+  if (!trimmedText) return;
 
-  const newId = todos.value.length > 0 ? Math.max(...todos.value.map(t => t.id)) + 1 : 1
+  const newId =
+    todos.value.length > 0 ? Math.max(...todos.value.map((t) => t.id)) + 1 : 1;
   todos.value.push({
     id: newId,
     text: trimmedText,
-    completed: false
-  })
-  newTodo.value = ''
-}
+    completed: false,
+  });
+  newTodo.value = "";
+};
 
 const removeTodo = (id) => {
-  todos.value = todos.value.filter(todo => todo.id !== id)
+  todos.value = todos.value.filter((todo) => todo.id !== id);
   // 如果正在编辑的任务被删除，则取消编辑状态
   if (editingId.value === id) {
-    editingId.value = null
-    editingText.value = ''
+    editingId.value = null;
+    editingText.value = "";
   }
-}
+};
 
 const startEdit = (todo) => {
-  editingId.value = todo.id
-  editingText.value = todo.text
-}
+  editingId.value = todo.id;
+  editingText.value = todo.text;
+};
 
 const saveEdit = (id) => {
-  const trimmedText = editingText.value.trim()
+  const trimmedText = editingText.value.trim();
   if (!trimmedText) {
     // 如果编辑后文本为空，则删除该任务
-    removeTodo(id)
-    return
+    removeTodo(id);
+    return;
   }
 
-  const todo = todos.value.find(t => t.id === id)
+  const todo = todos.value.find((t) => t.id === id);
   if (todo) {
-    todo.text = trimmedText
+    todo.text = trimmedText;
   }
-  editingId.value = null
-  editingText.value = ''
-}
+  editingId.value = null;
+  editingText.value = "";
+};
 
 const clearCompleted = () => {
-  todos.value = todos.value.filter(todo => !todo.completed)
-}
+  todos.value = todos.value.filter((todo) => !todo.completed);
+};
 
 const clearAll = () => {
-  todos.value = []
-}
+  todos.value = [];
+};
+
+/**
+ * 处理演示按钮点击事件
+ * @param {string} variant - 按钮变体类型
+ */
+const handleButtonClick = (variant) => {
+  console.log(`DemoButton clicked: ${variant} variant`);
+
+  // 根据按钮类型执行不同操作
+  switch (variant) {
+    case 'primary':
+      // 主按钮逻辑 - 可以添加新任务
+      if (newTodo.value.trim()) {
+        addTodo();
+      } else {
+        newTodo.value = '来自主按钮的新任务';
+      }
+      break;
+    case 'danger':
+      // 危险按钮逻辑 - 清除已完成任务
+      clearCompleted();
+      break;
+    case 'success':
+      // 成功按钮逻辑 - 标记所有任务为完成
+      todos.value.forEach(todo => {
+        todo.completed = true;
+      });
+      break;
+  }
+};
 </script>
 
 <style scoped>
@@ -159,6 +222,50 @@ const clearAll = () => {
   width: 100%;
   max-width: 600px;
   margin: 0 auto;
+}
+
+/* DemoButton 展示区域样式 */
+.demo-button-showcase {
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 30px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.demo-button-showcase h2 {
+  color: #1e293b;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: 700;
+}
+
+.button-group {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+@media (max-width: 768px) {
+  .demo-button-showcase {
+    padding: 20px;
+    margin-bottom: 24px;
+  }
+
+  .button-group {
+    gap: 12px;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .button-group .demo-button {
+    width: 100%;
+    max-width: 200px;
+  }
 }
 
 /* Buttons */
@@ -193,7 +300,7 @@ const clearAll = () => {
 
 .btn:hover {
   transform: scale(1.05);
-  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 /* Input styles */
@@ -256,7 +363,7 @@ const clearAll = () => {
 
 .todo-item:hover {
   border-color: #cbd5e0;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 .todo-item.completed {
@@ -431,7 +538,9 @@ const clearAll = () => {
   animation: fadeIn 0.5s ease-out;
 }
 
-.message, .counter, .dynamic-text {
+.message,
+.counter,
+.dynamic-text {
   animation: fadeIn 0.3s ease-out;
 }
 </style>
