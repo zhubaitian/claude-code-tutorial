@@ -15,5 +15,6 @@
   ],
   "enabledPlugins": {
     "playwright@claude-plugins-official": true
-  }
+  },
+  "outputStyle": "default"
 }
