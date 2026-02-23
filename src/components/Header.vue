@@ -55,7 +55,7 @@
 
 .logo i {
   font-size: 1.8rem;
-  color: var(--color-primary);
+  color: var(--color-white);
 }
 
 .nav-menu {

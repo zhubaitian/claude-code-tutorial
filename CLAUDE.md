@@ -111,6 +111,10 @@ To add testing, consider:
 - Uses modern CSS: Flexbox, CSS Grid, CSS variables, gradients
 - Responsive design with media queries
 
+## Vue/TypeScript Development
+
+When creating Vue components, always include TypeScript types and export them as named exports with proper prop definitions.
+
 ## Migration Considerations
 
 The project shows two approaches:
@@ -136,3 +140,7 @@ When extending the application:
 3. Test changes in browser at http://localhost:8082
 4. Run `npm run build` for production deployment
 5. Use `npm run preview` to test production build locally
+
+## Tool Usage
+
+Before running any video generation or complex UI design tools, first check if required dependencies are installed and test with a simple command.

@@ -6,7 +6,11 @@
       "Bash(git commit:*)",
       "Bash(git pull:*)",
       "Bash(git checkout:*)",
-      "WebFetch(domain:github.com)"
+      "WebFetch(domain:github.com)",
+      "mcp__plugin_claude-mem_mcp-search__search",
+      "Bash(node:*)",
+      "Bash(python3:*)",
+      "Bash(ls:*)"
     ]
   },
   "enableAllProjectMcpServers": true,
@@ -14,7 +18,8 @@
     "playwright"
   ],
   "enabledPlugins": {
-    "playwright@claude-plugins-official": true
+    "playwright@claude-plugins-official": true,
+    "document-skills@anthropic-agent-skills": true
   },
   "outputStyle": "default"
 }
